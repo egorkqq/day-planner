@@ -1,0 +1,68 @@
+*
+  box-sizing: border-box
+  -webkit-box-sizing: border-box
+  font-family: Roboto, sans-serif
+
+body
+  font-family: sans-serif
+  font-size: 16px
+  color: #444
+
+.Calendar
+  width: 80%
+  height: 480px
+  margin: 100px auto
+
+
+
+
+.Calendar-grid
+  display: flex
+  flex-wrap: wrap
+  width: 100%
+
+.Calendar-header
+  text-align: center
+  display: flex
+  font-size: 26px
+  justify-content: flex-start
+  align-items: center
+  margin-bottom: 16px
+  button
+    display: inline-block
+    margin-bottom: 0
+    font-weight: normal
+    text-align: center
+    vertical-align: middle
+    cursor: pointer
+    background-image: none
+    border: 1px solid #cccccc
+    white-space: nowrap
+    color: #333333
+    background-color: #ffffff
+    padding: 1px 5px
+    font-size: 12px
+    line-height: 1.5
+    border-radius: 3px
+    margin: 8px
+
+.Calendar-grid-item
+  flex: 0 14.28571%
+  min-height: 128px
+  border: 1px solid #ebebeb
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  padding: 4px
+  font-size: 12px
+.Calendar-grid-item--current
+  font-weight: 500
+  color: red
+
+.Calendar-grid-item
+  &.nextMonth, &.prevMonth
+    color: #999
+  &:nth-child(7n + 1)
+    border-left: 1px solid #ddd
+  &:nth-child(-n + 7)
+    border-top: 1px solid #ddd
