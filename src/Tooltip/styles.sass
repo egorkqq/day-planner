@@ -1,0 +1,30 @@
+.Tooltip
+  display: flex
+  flex-direction: column
+  padding: 16px
+  align-items: flex-start
+  box-shadow: 0px 0px 8px rgba(74, 74, 74, 0.2), 0px 2px 4px rgba(74, 74, 74, 0.2)
+  position: absolute
+  background: #fff
+  font-size: 14px
+  left: 200px
+  z-index: 10000
+  &-input
+    margin-bottom: 4px
+  &-textarea
+    margin-top: 24px
+  &-button
+    border: none
+    border-radius: 4px
+    margin-top: 16px
+    padding: 4px
+  &:after 
+    content: ""
+    position: absolute
+    width: 0
+    height: 0
+    border-width: 10px
+    border-style: solid
+    border-color: transparent #FFFFFF transparent transparent
+    top: 16px
+    left: -20px
