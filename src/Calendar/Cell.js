@@ -52,8 +52,10 @@ class Cell extends Component {
             }
           }}
         >
-          {dayName}
-          {day.format("D")}
+          <div className="Calendar-grid-item-day">
+            {dayName}
+            {day.format("D")}
+          </div>
           {data && (
             <div>
               <div className="Calendar-grid-item-title">
