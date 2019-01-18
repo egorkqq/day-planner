@@ -8,8 +8,7 @@ import Header from "./Header";
 export default class App extends Component {
   state = {
     date: moment(),
-    tooltipOpened: false,
-    openedDate: null
+    tooltipOpened: false
   };
   setToday = () => {
     this.setState({ date: moment() });
@@ -20,9 +19,9 @@ export default class App extends Component {
         {
           date: "1547665200000",
           content: {
-            event: "Сделать ТЗ",
-            names: "Егор",
-            description: "Здесь должно быть описание"
+            event: "Митинг на болотной",
+            names: "Володя Пу, Дима Мищечкин",
+            description: "Тестовое задание для iQ-dev"
           }
         }
       ]);

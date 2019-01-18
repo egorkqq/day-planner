@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Search from "./../Search";
 import "./styles.sass";
 class Header extends Component {
   state = {};
@@ -6,14 +7,15 @@ class Header extends Component {
     return (
       <header className="Header">
         <button className="Header-button">Добавить</button>
-        <button className="Header-button">Обновить</button>
+        <button
+          onClick={() => window.location.reload}
+          className="Header-button"
+        >
+          Обновить
+        </button>
         <div className="Header-search">
-          <button className="fas fa-search Header-search-button" />
-          <input
-            tabindex="1"
-            className="Header-search-input"
-            placeholder="Событие, дата или участник"
-          />
+          <i className="fas fa-search Header-search-button" />
+          <Search />
         </div>
       </header>
     );
