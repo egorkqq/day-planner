@@ -19,7 +19,14 @@ class Cell extends Component {
     const data = JSON.parse(localStorage.getItem("data")).filter(
       el => +el.date === +this.props.day.format("x")
     );
-    if (data.length) this.setState({ data: data[0] });
+    if (data.length) {
+      this.setState({
+        data: data[0]
+      });
+    }
+  };
+  clearData = () => {
+    this.setState({ data: undefined });
   };
   componentDidMount() {
     this.getDataFromStorage();
@@ -35,7 +42,16 @@ class Cell extends Component {
           classNames
         )}
       >
-        <div className="Calendar-grid-item-content" onClick={this.openTooltip}>
+        <div
+          tabindex="0"
+          className="Calendar-grid-item-content"
+          onClick={this.openTooltip}
+          onKeyDown={e => {
+            if (e.keyCode === 13) {
+              this.openTooltip();
+            }
+          }}
+        >
           {dayName}
           {day.format("D")}
           {data && (
@@ -56,6 +72,7 @@ class Cell extends Component {
             day={day}
             openTooltip={this.openTooltip}
             updateCell={this.getDataFromStorage}
+            clearData={this.clearData}
           />
         )}
       </div>

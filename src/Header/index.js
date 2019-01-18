@@ -10,6 +10,7 @@ class Header extends Component {
         <div className="Header-search">
           <button className="fas fa-search Header-search-button" />
           <input
+            tabindex="1"
             className="Header-search-input"
             placeholder="Событие, дата или участник"
           />

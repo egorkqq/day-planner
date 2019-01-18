@@ -26,11 +26,22 @@ class Tooltip extends Component {
       };
       const newData = [...prevData, newDataItem];
       localStorage.setItem("data", JSON.stringify(newData));
+      openTooltip();
+      updateCell();
     } else alert("Введите данные");
-    updateCell();
-    openTooltip();
   };
-
+  clearData = () => {
+    const { day, openTooltip, clearData } = this.props;
+    if (this.checkToExists()) {
+      const prevData = JSON.parse(localStorage.getItem("data"));
+      const newData = prevData.filter(el => +el.date !== +day.format("x"));
+      localStorage.setItem("data", JSON.stringify(newData));
+      clearData();
+      openTooltip();
+    } else {
+      alert("Вы еще ничего не запланировали на данное число");
+    }
+  };
   checkToExists = () => {
     const { day } = this.props;
     const data = JSON.parse(localStorage.getItem("data")).filter(
@@ -42,7 +53,6 @@ class Tooltip extends Component {
   componentDidMount() {
     const { data } = this.props;
     if (data) {
-      console.log("пишу в тейт");
       this.setState({
         event: data.content.event,
         names: data.content.names,
@@ -68,6 +78,7 @@ class Tooltip extends Component {
 
   render() {
     const { event, names, description } = this.state;
+    const { openTooltip } = this.props;
     return (
       <div ref={this.setWrapperRef} className="Tooltip">
         <input
@@ -105,6 +116,7 @@ class Tooltip extends Component {
             Удалить
           </button>
         </div>
+        <i onClick={openTooltip} class="fas fa-times Tooltip-close" />
       </div>
     );
   }
