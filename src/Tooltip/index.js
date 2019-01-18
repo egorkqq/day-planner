@@ -12,7 +12,13 @@ class Tooltip extends Component {
   saveData = () => {
     const { event, names, description } = this.state;
     const { day, openTooltip, updateCell } = this.props;
+
     if (event && names) {
+      if (this.checkToExists()) {
+        const prevData = JSON.parse(localStorage.getItem("data"));
+        const newData = prevData.filter(el => +el.date !== +day.format("x"));
+        localStorage.setItem("data", JSON.stringify(newData));
+      }
       const prevData = JSON.parse(localStorage.getItem("data"));
       const newDataItem = {
         date: day.format("x"),
@@ -25,7 +31,24 @@ class Tooltip extends Component {
     openTooltip();
   };
 
+  checkToExists = () => {
+    const { day } = this.props;
+    const data = JSON.parse(localStorage.getItem("data")).filter(
+      el => +el.date === +day.format("x")
+    );
+    if (data.length) return true;
+  };
+
   componentDidMount() {
+    const { data } = this.props;
+    if (data) {
+      console.log("пишу в тейт");
+      this.setState({
+        event: data.content.event,
+        names: data.content.names,
+        description: data.content.description
+      });
+    }
     document.addEventListener("mousedown", this.handleClickOutside);
   }
 
@@ -74,9 +97,14 @@ class Tooltip extends Component {
           className="Tooltip-textarea"
           rows="5"
         />
-        <button onClick={this.saveData} className="Tooltip-button">
-          Готово
-        </button>
+        <div>
+          <button onClick={this.saveData} className="Tooltip-button">
+            Готово
+          </button>
+          <button onClick={this.clearData} className="Tooltip-button">
+            Удалить
+          </button>
+        </div>
       </div>
     );
   }

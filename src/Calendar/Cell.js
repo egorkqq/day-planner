@@ -3,7 +3,11 @@ import moment from "moment";
 import cx from "classnames";
 import Tooltip from "./../Tooltip";
 class Cell extends Component {
-  state = { tooltipOpened: false, data: undefined };
+  state = {
+    tooltipOpened: false,
+    data: undefined,
+    thisEventAlreadyExists: false
+  };
   openTooltip = e => {
     this.setState(prevState => {
       return {
@@ -48,6 +52,7 @@ class Cell extends Component {
         </div>
         {tooltipOpened && (
           <Tooltip
+            data={data}
             day={day}
             openTooltip={this.openTooltip}
             updateCell={this.getDataFromStorage}
