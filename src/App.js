@@ -2,8 +2,8 @@ import React, { Component, Fragment } from "react";
 import Calendar from "./Calendar";
 import moment from "moment";
 import "moment/locale/ru";
-import cx from "classnames";
-import Tooltip from "./Tooltip";
+import Cell from "./Calendar/Cell";
+
 export default class App extends Component {
   state = {
     date: moment(),
@@ -13,63 +13,49 @@ export default class App extends Component {
   setToday = () => {
     this.setState({ date: moment() });
   };
-  openTooltip = e => {
-    const val = e.target.id;
-    this.setState(prevState => {
-      console.log(val);
-      return {
-        tooltipOpened: !prevState.tooltipOpened,
-        openedDate: val
-      };
-    });
-  };
+  componentWillMount() {
+    if (!localStorage.data) {
+      localStorage.data = JSON.stringify([
+        {
+          date: 1547665200000,
+          content: {
+            event: "Тестовый",
+            names: "Ваня",
+            description: "гав-гав тестовое событие"
+          }
+        }
+      ]);
+    }
+  }
+
   render() {
-    let weekdayName = 7;
-    const { tooltipOpened, openedDate } = this.state;
+    let counter = 7;
     return (
       <Fragment>
         <Calendar
           onChangeMonth={date => this.setState({ date })}
           date={this.state.date}
-          onPickDate={date => console.log(date.startOf("month"))}
           renderDay={({ day, classNames, onPickDate }) => {
-            while (weekdayName) {
-              weekdayName--;
+            counter--;
+            if (counter >= 0) {
               return (
-                <div
-                  key={day.format()}
-                  className={cx(
-                    "Calendar-grid-item",
-                    day.isSame(moment(), "day") &&
-                      "Calendar-grid-item--current",
-                    classNames
-                  )}
-                  id={day}
-                  onClick={this.openTooltip}
-                >
-                  {tooltipOpened && openedDate === day && <Tooltip />}
-                  {day
-                    .format("dddd")
-                    .charAt(0)
-                    .toUpperCase() + day.format("dddd").slice(1)}
-                  {",  "}
-                  {day.format("D")}
-                </div>
+                <Cell
+                  key={day.format("x")}
+                  day={day}
+                  classNames={classNames}
+                  dayName={
+                    day
+                      .format("dddd")
+                      .charAt(0)
+                      .toUpperCase() +
+                    day.format("dddd").slice(1) +
+                    ", "
+                  }
+                />
               );
             }
             return (
-              <div
-                id={day}
-                onClick={this.openTooltip}
-                key={day.format()}
-                className={cx(
-                  "Calendar-grid-item",
-                  day.isSame(moment(), "day") && "Calendar-grid-item--current",
-                  classNames
-                )}
-              >
-                {day.format("D")}
-              </div>
+              <Cell key={day.format("x")} day={day} classNames={classNames} />
             );
           }}
           renderHeader={({ date, onPrevMonth, onNextMonth }) => (
