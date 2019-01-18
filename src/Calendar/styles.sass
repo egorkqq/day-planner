@@ -19,6 +19,7 @@ body
   display: flex
   flex-wrap: wrap
   width: 100%
+  
 
 .Calendar-header
   text-align: center
@@ -58,8 +59,13 @@ body
   font-size: 12px
   position: relative
   max-width: 14.28571%
+  cursor: pointer
   &-content
-    flex-basis: 100% 
+    flex-basis: 100%
+    &:focus 
+      outline: 4px solid rgba(83, 83, 83, 0.15)
+    &:hover
+      outline: 4px solid rgba(83, 83, 83, 0.15)
   &-title
     margin: 4px 0px
     font-weight: 500
@@ -74,9 +80,11 @@ body
     color: #000
     font-weight: 400
   &--current
-    font-weight: 500
+    font-weight: bold
     color: red
     background: #fafafa
+  
+
 
 .Calendar-grid-item
   &.nextMonth, &.prevMonth
