@@ -1,23 +1,23 @@
-import React, { Component, Fragment } from "react";
-import Autosuggest from "react-autosuggest";
-import moment from "moment";
-import "moment/locale/ru";
+import React, { Component, Fragment } from 'react';
+import Autosuggest from 'react-autosuggest';
+import moment from 'moment';
+import 'moment/locale/ru';
 
-import "./styles.sass";
+import './styles.sass';
 
 function escapeRegexCharacters(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function getSuggestions(value) {
-  const events = JSON.parse(localStorage.getItem("data"));
+  const events = JSON.parse(localStorage.getItem('data'));
   const escapedValue = escapeRegexCharacters(value.trim());
 
-  if (escapedValue === "") {
+  if (escapedValue === '') {
     return [];
   }
 
-  const regex = new RegExp(escapedValue, "i");
+  const regex = new RegExp(escapedValue, 'i');
   return events.filter(event => {
     return regex.test(event.content.event) || regex.test(event.content.names);
   });
@@ -30,11 +30,9 @@ function getSuggestionValue(suggestion) {
 function renderSuggestion(suggestion) {
   return (
     <Fragment>
-      <span className="react-autosuggest__suggestion__title">
-        {suggestion.content.event}
-      </span>
+      <span className="react-autosuggest__suggestion__title">{suggestion.content.event}</span>
       <span className="react-autosuggest__suggestion__date">
-        {moment(+suggestion.date).format("D MMMM")}
+        {moment(+suggestion.date).format('D MMMM')}
       </span>
     </Fragment>
   );
@@ -42,34 +40,34 @@ function renderSuggestion(suggestion) {
 
 export default class Search extends Component {
   state = {
-    value: "",
-    suggestions: []
+    value: '',
+    suggestions: [],
   };
 
-  onChange = (event, { newValue, method }) => {
+  onChange = (event, { newValue }) => {
     this.setState({
-      value: newValue
+      value: newValue,
     });
   };
 
   onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: getSuggestions(value),
     });
   };
 
   onSuggestionsClearRequested = () => {
     this.setState({
-      suggestions: []
+      suggestions: [],
     });
   };
 
   render() {
     const { value, suggestions } = this.state;
     const inputProps = {
-      placeholder: "Событие или участник",
+      placeholder: 'Событие или участник',
       value,
-      onChange: this.onChange
+      onChange: this.onChange,
     };
 
     return (
