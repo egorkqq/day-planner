@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/iqonline/precache-manifest.a89cbc55442d573b09a4a6b1c82b5303.js"
+  "/iqonline/precache-manifest.15254c35d8a4be63e5354947ca85430d.js"
 );
 
 workbox.clientsClaim();
