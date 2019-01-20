@@ -10,7 +10,7 @@ function escapeRegexCharacters(str) {
 }
 
 function getSuggestions(value) {
-  const events = JSON.parse(localStorage.getItem('data'));
+  const events = JSON.parse(localStorage.getItem('data')).sort((a, b) => a.date - b.date);
   const escapedValue = escapeRegexCharacters(value.trim());
 
   if (escapedValue === '') {
@@ -40,7 +40,7 @@ function renderSuggestion(suggestion) {
 
 export default class Search extends Component {
   state = {
-    value: '',
+    value: 'as',
     suggestions: [],
   };
 
