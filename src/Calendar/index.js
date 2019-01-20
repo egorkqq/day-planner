@@ -1,44 +1,28 @@
 import React, { Component } from 'react';
-import cx from 'classnames';
 import createDateObjects from './createDateObjects';
 import './styles.sass';
 
 export default class Calendar extends Component {
   handleNextMonth = () => {
-    if (this.props.onNextMonth) {
-      return this.props.onNextMonth();
-    }
-    this.props.onChangeMonth(this.props.date.clone().add(1, 'months'));
+    const { onChangeMonth, date } = this.props;
+    onChangeMonth(date.clone().add(1, 'months'));
   };
 
   handlePrevMonth = () => {
-    if (this.props.onPrevMonth) {
-      return this.props.onPrevMonth();
-    }
-    this.props.onChangeMonth(this.props.date.clone().subtract(1, 'months'));
+    const { onChangeMonth, date } = this.props;
+    onChangeMonth(date.clone().subtract(1, 'months'));
   };
 
   render() {
-    const {
-      date,
-      weekOffset,
-      renderDay,
-      renderHeader,
-      onPickDate,
-      contentClassName,
-      containerClassName,
-    } = this.props;
-
+    const { date, renderDay, renderHeader } = this.props;
     return (
-      <div className={cx('Calendar', containerClassName)}>
+      <div className="Calendar">
         {renderHeader({
           date,
           onPrevMonth: this.handlePrevMonth,
           onNextMonth: this.handleNextMonth,
         })}
-        <div className={cx('Calendar-grid', contentClassName)}>
-          {createDateObjects(date, weekOffset).map(day => renderDay({ ...day, onPickDate }))}
-        </div>
+        <div className="Calendar-grid">{createDateObjects(date).map(day => renderDay(day))}</div>
       </div>
     );
   }

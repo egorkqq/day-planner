@@ -24,9 +24,9 @@ export default class App extends Component {
         {
           date: '1547665200000',
           content: {
-            event: 'Митинг на болотной',
-            names: 'Володя Пу, Дима Мищечкин',
-            description: 'Тестовое задание для iQ-dev',
+            event: 'Тестовое задание для iQ-dev',
+            names: 'Егор Сидоров',
+            description: 'Описание события',
           },
         },
       ]);
@@ -65,10 +65,10 @@ export default class App extends Component {
                 <i className="fas fa-angle-left" />
               </button>
               <div className="Calendar-header-currentDate">
-                {date
+                {`${date
                   .format('MMMM YYYY')
                   .charAt(0)
-                  .toUpperCase() + date.format('MMMM YYYY').slice(1)}
+                  .toUpperCase()}${date.format('MMMM YYYY').slice(1)}`}
               </div>
               <button type="button" onClick={onNextMonth}>
                 <i className="fas fa-angle-right" />

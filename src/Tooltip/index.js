@@ -95,7 +95,6 @@ class Tooltip extends Component {
           type="text"
           value={event}
           className="Tooltip-input"
-          maxLength="20"
         />
         <input
           onChange={this.onInput}
@@ -104,7 +103,6 @@ class Tooltip extends Component {
           type="text"
           value={names}
           className="Tooltip-input"
-          maxLength="40"
         />
         <textarea
           onChange={this.onInput}

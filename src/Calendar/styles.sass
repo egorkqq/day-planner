@@ -4,15 +4,11 @@
   font-family: Roboto, sans-serif
 
 body
-  font-family: sans-serif
-  font-size: 16px
   color: #444
 
 .Calendar
-  width: 80%
   height: 480px
-  margin: 16px auto
-  
+  margin: 0 auto
   max-width: 992px
 
 .Calendar-grid
@@ -27,7 +23,7 @@ body
   font-size: 26px
   justify-content: flex-start
   align-items: center
-  margin-bottom: 16px
+  margin: 16px 0
   &-currentDate
     width: 188px
   button
@@ -49,7 +45,7 @@ body
     margin: 8px
 
 .Calendar-grid-item
-  flex: 0 14.28571%
+  flex-basis: 14.28571%
   min-height: 128px
   border: 1px solid #ebebeb
   display: flex
@@ -58,8 +54,9 @@ body
   padding: 4px
   font-size: 12px
   position: relative
-  max-width: 14.28571%
   cursor: pointer
+  word-wrap: break-word
+  max-width: 14.28571%
   &-content
     flex-basis: 100%
     &:focus 

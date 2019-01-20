@@ -1,9 +1,8 @@
 import moment from 'moment';
 
-export default function createDateObjects(date, weekOffset = 0) {
+export default function createDateObjects(date) {
   const startOfMonth = date.startOf('month');
-  let diff = startOfMonth.weekday() - weekOffset;
-  if (diff < 0) diff += 7;
+  const diff = startOfMonth.weekday();
   const prevMonthDays = [];
   for (let i = 0; i < diff; i++) {
     prevMonthDays.push({

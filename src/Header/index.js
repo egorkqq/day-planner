@@ -8,15 +8,17 @@ class Header extends Component {
   render() {
     return (
       <header className="Header">
-        <button type="button" className="Header-button">
-          {'Добавить'}
-        </button>
-        <button type="button" onClick={() => window.location.reload} className="Header-button">
-          {'Обновить'}
-        </button>
-        <div className="Header-search">
-          <i className="fas fa-search Header-search-button" />
-          <Search />
+        <div className="Header-container">
+          <button type="button" className="Header-button">
+            {'Добавить'}
+          </button>
+          <button type="button" onClick={() => window.location.reload} className="Header-button">
+            {'Обновить'}
+          </button>
+          <div className="Header-search">
+            <i className="fas fa-search Header-search-button" />
+            <Search />
+          </div>
         </div>
       </header>
     );
