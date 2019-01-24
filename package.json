@@ -2,7 +2,7 @@
   "name": "test-task",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://egorkqq.github.io/iqonline",
+  "homepage": "https://egorkqq.github.io/day-planner/",
   "dependencies": {
     "classnames": "^2.2.6",
     "gh-pages": "^2.0.1",
