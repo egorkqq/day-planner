@@ -1,13 +1,13 @@
 {
-  "main.css": "/iqonline/static/css/main.26d5529a.chunk.css",
-  "main.js": "/iqonline/static/js/main.cc44b6ef.chunk.js",
-  "main.js.map": "/iqonline/static/js/main.cc44b6ef.chunk.js.map",
-  "static/js/1.534318bf.chunk.js": "/iqonline/static/js/1.534318bf.chunk.js",
-  "static/js/1.534318bf.chunk.js.map": "/iqonline/static/js/1.534318bf.chunk.js.map",
-  "runtime~main.js": "/iqonline/static/js/runtime~main.e20f461b.js",
-  "runtime~main.js.map": "/iqonline/static/js/runtime~main.e20f461b.js.map",
-  "static/css/main.26d5529a.chunk.css.map": "/iqonline/static/css/main.26d5529a.chunk.css.map",
-  "index.html": "/iqonline/index.html",
-  "precache-manifest.fc50f40267575ffe7fe2c5710a4b8586.js": "/iqonline/precache-manifest.fc50f40267575ffe7fe2c5710a4b8586.js",
-  "service-worker.js": "/iqonline/service-worker.js"
+  "main.css": "/day-planner/static/css/main.5d02b1d4.chunk.css",
+  "main.js": "/day-planner/static/js/main.7d92edc4.chunk.js",
+  "main.js.map": "/day-planner/static/js/main.7d92edc4.chunk.js.map",
+  "static/js/1.534318bf.chunk.js": "/day-planner/static/js/1.534318bf.chunk.js",
+  "static/js/1.534318bf.chunk.js.map": "/day-planner/static/js/1.534318bf.chunk.js.map",
+  "runtime~main.js": "/day-planner/static/js/runtime~main.4ace5adc.js",
+  "runtime~main.js.map": "/day-planner/static/js/runtime~main.4ace5adc.js.map",
+  "static/css/main.5d02b1d4.chunk.css.map": "/day-planner/static/css/main.5d02b1d4.chunk.css.map",
+  "index.html": "/day-planner/index.html",
+  "precache-manifest.6b28fe462410e931f3ca13da0f65ae31.js": "/day-planner/precache-manifest.6b28fe462410e931f3ca13da0f65ae31.js",
+  "service-worker.js": "/day-planner/service-worker.js"
 }
