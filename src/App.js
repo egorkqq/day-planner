@@ -1,85 +1,37 @@
-import React, { Component, Fragment } from 'react';
-import moment from 'moment';
-import Calendar from './Calendar';
-import 'moment/locale/ru';
-import Cell from './Calendar/Cell';
-import Header from './Header';
+/*eslint-disable */
+import React, { Component } from "react";
+import './main.css';
+import keka from './statement-image.png';
+/* 
+Саша устроился работать представителем Tinkoff и проходит обучение: в первый день, чтобы доставить карты клиентам, он прошел X метров. Путь каждого следующего дня получался длиннее на 70% от предыдущего дня. Саша хочет за все дни работы суммарно пройти не менее Y метров, на какой день он достигнет своей цели?
 
-export default class App extends Component {
-  state = {
-    currentDate: moment(),
-  };
+Входные данные
+Первая и единственная строка содержит числа X и Y, заданные через пробел (0 < X <= Y <= 1000) с точностью до 8 знаков после запятой.
+*/
 
-  componentWillMount() {
-    this.renderExample();
+class App extends Component {
+  state = {};
+
+  componentDidMount() {
   }
-
-  setToday = () => {
-    this.setState({ currentDate: moment() });
-  };
-
-  renderExample = () => {
-    if (!localStorage.data) {
-      localStorage.data = JSON.stringify([
-        {
-          date: '1547665200000',
-          content: {
-            event: 'Тестовое задание для iQ-dev',
-            names: 'Егор Сидоров',
-            description: 'Описание события',
-          },
-        },
-      ]);
-    }
-  };
 
   render() {
-    let counter = 7;
-    const { currentDate } = this.state;
-    return (
-      <Fragment>
-        <Header />
-        <Calendar
-          onChangeMonth={date => this.setState({ currentDate: date })}
-          date={currentDate}
-          renderDay={({ day, classNames }) => {
-            counter -= 1;
-            if (counter >= 0) {
-              return (
-                <Cell
-                  key={day.format('x')}
-                  day={day}
-                  classNames={classNames}
-                  dayName={`${day
-                    .format('dddd')
-                    .charAt(0)
-                    .toUpperCase()}${day.format('dddd').slice(1)}, `}
-                />
-              );
-            }
-            return <Cell key={day.format('x')} day={day} classNames={classNames} />;
-          }}
-          renderHeader={({ date, onPrevMonth, onNextMonth }) => (
-            <div className="Calendar-header">
-              <button type="button" onClick={onPrevMonth}>
-                <i className="fas fa-angle-left" />
-              </button>
-              <div className="Calendar-header-currentDate">
-                {`${date
-                  .format('MMMM YYYY')
-                  .charAt(0)
-                  .toUpperCase()}${date.format('MMMM YYYY').slice(1)}`}
-              </div>
-              <button type="button" onClick={onNextMonth}>
-                <i className="fas fa-angle-right" />
-              </button>
-              <button type="button" onClick={this.setToday}>
-                {'Сегодня'}
-              </button>
-            </div>
-          )}
-        />
-      </Fragment>
-    );
+    return (<>
+    <hgroup class="hgroup">
+            <h1 class="hgroup__title">Популярное в городе</h1>
+            <h2 class="hgroup__desc">Подборки интересных мест</h2>
+        </hgroup>
+        <ul class="events">
+            <li class="events__item">
+                <a href="#" class="card">
+                    <div class="card__image"></div>
+                    <h3 class="card__title">Завтраки в кафе и ресторанах Москвы: выбор «СысоевFM»</h3>
+                    <p class="card__summary">В Москве культура завтраков развита как нигде в России — с раннего утра во многих заведениях не протолкнуться. Кто-то проводит встречи, кто-то просто не любит готовить дома, а кто-то спокойно созерцает милый шум и гам, будучи туристом в столице. В подборке СысоевFM собраны как легендарные места, так и новые, но уже полюбившиеся — на любой вкус и даже на любое время дня.</p>
+                </a>
+            </li>
+        </ul>
+    </>);
   }
 }
+
+export default App;
